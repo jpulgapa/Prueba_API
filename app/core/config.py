@@ -6,9 +6,10 @@ from dotenv import load_dotenv  # Para cargar variables desde archivo .env
 # Cargar variables de entorno desde el archivo .env en la raíz del proyecto
 load_dotenv()
 
-@dataclass(frozen=True) 
+@dataclass(frozen=True)
+class Settings:
     """
-    Configuración centralizada de la aplicación.
+      Configuración centralizada de la aplicación.
     
     Buena práctica: mantener toda la configuración en un solo lugar
     facilita cambios y evita hardcodear valores sensibles en el código.
