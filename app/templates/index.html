@@ -4,55 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agente IA</title>
+  <!-- Enlace al archivo CSS para estilos visuales -->
   <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
+  <!-- Contenedor principal con clase 'card' para estilos -->
   <main class="card">
     <h1>Prueba Agente IA</h1>
 
+    <!-- Formulario para enviar prompts al agente -->
     <form id="chat-form">
+      <!-- Campo de entrada para el texto del usuario -->
       <input id="prompt" name="prompt" placeholder="Escribe tu prompt..." autocomplete="off" required />
+      <!-- Botón para enviar el formulario -->
       <button type="submit">Enviar</button>
     </form>
 
+    <!-- Sección donde se mostrarán los mensajes del chat -->
     <section class="log" id="log"></section>
   </main>
 
   <script>
-    const form = document.getElementById("chat-form");
-    const input = document.getElementById("prompt");
-    const log = document.getElementById("log");
+    // Obtener referencias a los elementos del DOM
+    const form = document.getElementById("chat-form");  // Formulario
+    const input = document.getElementById("prompt");    // Campo de entrada
+    const log = document.getElementById("log");         // Área de mensajes
 
+    /**
+     * Función para agregar una línea de mensaje al log
+     * @param {string} text - Texto a mostrar
+     * @param {string} cls - Clase CSS para el estilo (user, bot, error)
+     */
     function addLine(text, cls) {
-      const p = document.createElement("p");
-      p.className = cls;
-      p.textContent = text;
-      log.appendChild(p);
-      log.scrollTop = log.scrollHeight;
+      const p = document.createElement("p");  // Crear elemento párrafo
+      p.className = cls;                      // Asignar clase CSS
+      p.textContent = text;                    // Establecer contenido de texto
+      log.appendChild(p);                      // Agregar al contenedor de mensajes
+      log.scrollTop = log.scrollHeight;        // Hacer scroll automático hacia abajo
     }
 
+    // Event listener para cuando se envía el formulario
     form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const prompt = input.value.trim();
-      if (!prompt) return;
+      e.preventDefault();  // Prevenir recarga de página por defecto
+      const prompt = input.value.trim();  // Obtener y limpiar el texto ingresado
+      if (!prompt) return;  // No hacer nada si está vacío
 
+      // Mostrar mensaje del usuario en el log
       addLine("Tú: " + prompt, "user");
-      input.value = "";
+      input.value = "";  // Limpiar el campo de entrada
 
+      // Crear FormData para enviar el prompt al servidor
       const fd = new FormData();
       fd.append("prompt", prompt);
 
       try {
+        // Enviar petición POST al endpoint /api/agent
         const res = await fetch("/api/agent", { method: "POST", body: fd });
+        // Parsear respuesta JSON
         const data = await res.json();
 
+        // Si hay error en la respuesta
         if (!res.ok) {
           addLine("Error: " + (data.error || "Request failed"), "error");
           return;
         }
 
+        // Mostrar respuesta del bot
         addLine(data.answer, "bot");
       } catch (err) {
+        // Manejar errores de red o parsing
         addLine("Error: " + err.message, "error");
       }
     });
