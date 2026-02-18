@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agente IA</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="card">
+    <h1>Prueba Agente IA</h1>
+
+    <form id="chat-form">
+      <input id="prompt" name="prompt" placeholder="Escribe tu prompt..." autocomplete="off" required />
+      <button type="submit">Enviar</button>
+    </form>
+
+    <section class="log" id="log"></section>
+  </main>
+
+  <script>
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("prompt");
+    const log = document.getElementById("log");
+
+    function addLine(text, cls) {
+      const p = document.createElement("p");
+      p.className = cls;
+      p.textContent = text;
+      log.appendChild(p);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const prompt = input.value.trim();
+      if (!prompt) return;
+
+      addLine("Tú: " + prompt, "user");
+      input.value = "";
+
+      const fd = new FormData();
+      fd.append("prompt", prompt);
+
+      try {
+        const res = await fetch("/api/agent", { method: "POST", body: fd });
+        const data = await res.json();
+
+        if (!res.ok) {
+          addLine("Error: " + (data.error || "Request failed"), "error");
+          return;
+        }
+
+        addLine(data.answer, "bot");
+      } catch (err) {
+        addLine("Error: " + err.message, "error");
+      }
+    });
+  </script>
+</body>
+</html>

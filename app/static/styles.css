@@ -1,0 +1,58 @@
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #0b1220;
+  color: #e8eefc;
+  margin: 0;
+  padding: 32px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #121b2e;
+  border: 1px solid #223154;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #2a3d67;
+  background: #0f1730;
+  color: #e8eefc;
+}
+
+button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 0;
+  background: #1a73e8;
+  color: white;
+  cursor: pointer;
+}
+
+.log {
+  height: 380px;
+  overflow: auto;
+  background: #0f1730;
+  border: 1px solid #223154;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.log p { margin: 8px 0; }
+.user { color: #b7ffcb; }
+.bot { color: #d7e4ff; }
+.error { color: #ffb7b7; }
