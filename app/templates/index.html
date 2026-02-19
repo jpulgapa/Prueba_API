@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agente IA</title>
   <link rel="stylesheet" href="/static/styles.css" />
-  <w
+  <link rel="stylesheet" href="/static/favicon.ico" />
 </head>
 <body>
   <main class="card">
@@ -26,10 +26,15 @@
 
 
     function addLine(text, cls) {
-      const p = document.createElement("p");
-      p.className = cls;
-      p.textContent = text;
-      log.appendChild(p);
+      const row = document.createElement("div");
+      row.className = `message-row ${cls}-row`;
+
+      const bubble = document.createElement("div");
+      bubble.className = `message ${cls}`;
+      bubble.textContent = text;
+
+      row.appendChild(bubble);
+      log.appendChild(row);
       log.scrollTop = log.scrollHeight;
     }
 

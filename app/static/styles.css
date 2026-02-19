@@ -51,12 +51,49 @@ button {
   border: 1px solid #223154;
   border-radius: 10px;
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.log p { margin: 8px 0; }
+.message-row {
+  display: flex;
+  width: 100%;
+}
 
-.user { color: #b7ffcb; }
+.user-row {
+  justify-content: flex-end;
+}
 
-.bot { color: #d7e4ff; }
+.bot-row,
+.error-row {
+  justify-content: flex-start;
+}
 
-.error { color: #ffb7b7; }
+.message {
+  max-width: 82%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #2a3d67;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.user {
+  color: #d9ffe5;
+  background: #1a3a2f;
+  border-color: #2e6b58;
+}
+
+.bot {
+  color: #d7e4ff;
+  background: #162447;
+  border-color: #27417a;
+}
+
+.error {
+  color: #ffd6d6;
+  background: #3a1d28;
+  border-color: #70374d;
+}
