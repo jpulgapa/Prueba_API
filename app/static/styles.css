@@ -1,73 +1,62 @@
-/* Estilos generales del cuerpo de la página */
 body {
-  font-family: system-ui, Arial, sans-serif;  /* Fuente nativa del sistema */
-  background: #0b1220;  /* Fondo azul oscuro */
-  color: #e8eefc;  /* Texto color claro */
-  margin: 0;  /* Sin márgenes externos */
-  padding: 32px;  /* Espaciado interno de 32px */
+  font-family: system-ui, Arial, sans-serif;
+  background: #0b1220;
+  color: #e8eefc;
+  margin: 0;
+  padding: 32px;
 }
 
-/* Estilos para el título principal */
 h1 {
-  text-align: center;  /* Centrar el texto */
-  margin-bottom: 24px;  /* Margen inferior de 24px */
+  text-align: center;
+  margin-bottom: 24px;
 }
 
-/* Contenedor tipo tarjeta para la interfaz */
 .card {
-  max-width: 720px;  /* Ancho máximo de 720px */
-  margin: 0 auto;  /* Centrar horizontalmente */
-  background: #121b2e;  /* Fondo azul oscuro */
-  border: 1px solid #223154;  /* Borde azul oscuro */
-  border-radius: 12px;  /* Bordes redondeados */
-  padding: 20px;  /* Espaciado interno */
+  max-width: 720px;
+  margin: 0 auto;
+  background: #121b2e;
+  border: 1px solid #223154;
+  border-radius: 12px;
+  padding: 20px;
 }
 
-/* Estilos del formulario */
 form {
-  display: flex;  /* Layout flexible (horizontal) */
-  gap: 10px;  /* Espacio de 10px entre elementos */
-  margin-bottom: 16px;  /* Margen inferior */
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-/* Estilos del campo de entrada de texto */
 input {
-  flex: 1;  /* Ocupa todo el espacio disponible */
-  padding: 10px 12px;  /* Espaciado interno */
-  border-radius: 8px;  /* Bordes redondeados */
-  border: 1px solid #2a3d67;  /* Borde azul */
-  background: #0f1730;  /* Fondo azul muy oscuro */
-  color: #e8eefc;  /* Texto color claro */
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #2a3d67;
+  background: #0f1730;
+  color: #e8eefc;
 }
 
-/* Estilos del botón de enviar */
 button {
-  padding: 10px 14px;  /* Espaciado interno */
-  border-radius: 8px;  /* Bordes redondeados */
-  border: 0;  /* Sin borde */
-  background: #1a73e8;  /* Fondo azul brillante */
-  color: white;  /* Texto blanco */
-  cursor: pointer;  /* Cursor de mano al pasar sobre él */
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 0;
+  background: #1a73e8;
+  color: white;
+  cursor: pointer;
 }
 
-/* Contenedor del historial de mensajes */
 .log {
-  height: 380px;  /* Altura fija de 380px */
-  overflow: auto;  /* Scroll automático si el contenido excede la altura */
-  background: #0f1730;  /* Fondo azul muy oscuro */
-  border: 1px solid #223154;  /* Borde azul oscuro */
-  border-radius: 10px;  /* Bordes redondeados */
-  padding: 12px;  /* Espaciado interno */
+  height: 380px;
+  overflow: auto;
+  background: #0f1730;
+  border: 1px solid #223154;
+  border-radius: 10px;
+  padding: 12px;
 }
 
-/* Estilos para los párrafos dentro del log */
 .log p { margin: 8px 0; }
 
-/* Clase para mensajes del usuario */
-.user { color: #b7ffcb; }  /* Verde claro */
+.user { color: #b7ffcb; }
 
-/* Clase para mensajes del bot */
-.bot { color: #d7e4ff; }  /* Azul claro */
+.bot { color: #d7e4ff; }
 
-/* Clase para mensajes de error */
-.error { color: #ffb7b7; }  /* Rojo claro */
+.error { color: #ffb7b7; }
