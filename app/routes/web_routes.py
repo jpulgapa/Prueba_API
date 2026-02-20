@@ -15,18 +15,21 @@ templates = Jinja2Templates(directory=templates_dir)
 
 @router.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    """Ruta principal que renderiza la página HTML"""
+    """Ruta principal que renderiza la página HTML del chat."""
     return templates.TemplateResponse("index.html", {"request": request})
 
 @router.post("/api/agent")
-def agent_endpoint(prompt: str = Form(...)):
-    """Endpoint API para procesar peticiones al agente IA."""
+def agent_endpoint(prompt: str = Form(...), developer_name: str = Form(None)):
+   
     try:
         ai_text = ask_agent(prompt)
+        name = developer_name if developer_name else settings.developer_name
+
+         
         return {
-            "developer": settings.developer_name,
-            "prompt": prompt,
-            "answer": f"{settings.developer_name}: {ai_text}",
+            "developer": name,  
+            "prompt": prompt,  
+            "answer": f"{name}: {ai_text}",  
         }
     except Exception as e:
         return JSONResponse({"error": str(e)}, status_code=500)

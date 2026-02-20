@@ -24,6 +24,7 @@ Groq es compatible con el cliente de OpenAI usando `base_url="https://api.groq.c
 
 ## Variables de entorno (.env)
 
+
 Crea un archivo .env en la raíz y pegaras lo siguiente:
 
 GROQ_API_KEY="TU_KEY"    (aca pondrias tu key generada desde https://console.groq.com/keys )
@@ -36,3 +37,23 @@ Clona el repositorio y luego instala las dependencias
 - py -m pip install -r requirements.txt 
 
 - Luego para ejecutarlo = uvicorn app.main:app --reload
+
+# Pruebas desde postman 
+
+- Probar el endpoint `/api/agent`
+- Requisitos previos
+- Tener el servidor corriendo
+- Tener Postman instalado
+
+#### Pasos
+
+1. Abre Postman y crea una nueva petición
+2. **Configura la petición:**
+   - Método: `POST`
+   - URL: `http://127.0.0.1:8000/api/agent`
+   - Body: `x-www-form-urlencoded`
+
+3. **Agrega los parámetros:**
+   - `prompt`: `quien eres?`
+   - `developer_name` (opcional): `Mariana`
+4. Dale click en send para obtener respuesta
